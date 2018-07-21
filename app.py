@@ -14,11 +14,11 @@ def test_socket():
 @socketio.on("connect")
 def on_connect():
   print("Someones connected! Sending bacj")
-  send("HELLO!")
+  emit("message", { 'msg': "HELLO" })
 
 @socketio.on("ping")
 def ping():
   print("PINGED!")
-  send("PONG")
+  emit("message", { 'msg': "PONG" })
 
 socketio.init_app(app)
