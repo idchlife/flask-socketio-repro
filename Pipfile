@@ -10,8 +10,8 @@ name = "pypi"
 flask = "*"
 flask-socketio = "*"
 pylint = "*"
-gevent = "*"
-gevent-websocket = "*"
+eventlet = "*"
+gunicorn = "*"
 
 
 [dev-packages]

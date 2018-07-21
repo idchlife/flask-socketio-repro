@@ -1,0 +1,12 @@
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io.connect("http://localhost:5004/socket.io");
+    console.log("Initializing socket");
+    socket.on("connect", function() {
+      socket.on("message", function(msg) {
+        console.log("GOT MESSAGE", msg);
+      });
+      console.log("Connected!");
+      socket.emit("ping");
+    });
+</script>
