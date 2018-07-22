@@ -12,6 +12,7 @@ flask-socketio = "*"
 pylint = "*"
 eventlet = "*"
 gunicorn = "*"
+redis = "*"
 
 
 [dev-packages]

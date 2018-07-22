@@ -1,15 +1,23 @@
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-<script type="text/javascript" charset="utf-8">
-    var socket = io.connect("http://localhost:5004/socket.io");
-    console.log("Initializing socket");
-    socket.on("custom", function(msg) {
-      console.log("GOT CUSTOM LISTENING BEFORE CONNECT", msg);
-    });
-    socket.on("connect", function() {
+<body>
+  <div>hello</div>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      var socket = io.connect("http://localhost:5004");
+      console.log("Initializing socket");
+      socket.on("connect", function() {
+        console.log("Connected!");
+        setInterval(function() {
+          socket.emit("custom_ping");
+        }, 1000);
+      });
       socket.on("custom", function(msg) {
         console.log("GOT CUSTOM", msg);
       });
-      console.log("Connected!");
-      socket.emit("ping");
+      socket.on("custom_pong", function(msg) {
+        console.log("receinved pong");
+      });
     });
-</script>
+  </script>
+</body>
